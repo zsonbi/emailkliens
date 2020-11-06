@@ -1,0 +1,39 @@
+﻿<Window x:Class="emailkliens.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:emailkliens"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="450" Width="400">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel>
+            <Label>Felhasználónév:</Label>
+            <TextBox HorizontalAlignment="Left" MinWidth="140" Name="Usernametbox" LostFocus="Usernametbox_LostFocus" PreviewKeyDown="PreviewKeyDown"></TextBox>
+
+            <Label>Jelszó:</Label>
+            <TextBox HorizontalAlignment="Left" MinWidth="140" Name="Passwordtbox" LostFocus="Passwordtbox_LostFocus" PreviewKeyDown="PreviewKeyDown"></TextBox>
+
+            <Label>Jelszó Ismét:</Label>
+            <TextBox HorizontalAlignment="Left" MinWidth="140" LostFocus="Passwordtbox_LostFocus" Name="RepeatPasswordtbox" PreviewKeyDown="PreviewKeyDown"></TextBox>
+
+            <Label>Emlékeztető:</Label>
+            <TextBox HorizontalAlignment="Left" MinWidth="140" Name="Remindertbox" LostFocus="Remindertbox_LostFocus" PreviewKeyDown="PreviewKeyDown"></TextBox>
+        </StackPanel>
+        <Button VerticalAlignment="Bottom" Content="Register" Name="Registerbtn"></Button>
+    </Grid>
+</Window>

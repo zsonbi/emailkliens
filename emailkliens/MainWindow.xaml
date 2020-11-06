@@ -1,0 +1,84 @@
+﻿<Window x:Class="emailkliens.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:emailkliens"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="900" Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40px"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--The top bar-->
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="Felhasználónév:"></Label>
+                <TextBox MinWidth="100" Name="Usernametbox"></TextBox>
+                <Label Content="Jelszó:"></Label>
+                <TextBox MinWidth="100" Name="Passwordtbox"></TextBox>
+                <Button Content="Belépés" Name="Loginbtn" Click="Loginbtn_Click"></Button>
+                <Button Content="Emlékeztető" Name="Reminderbtn" Click="Reminderbtn_Click"></Button>
+                <Button Content="Regisztráció" Name="Registerbtn" Click="Registerbtn_Click"></Button>
+            </StackPanel>
+            <Button Content="Kilépés" Margin="5" HorizontalAlignment="Right" Name="Logoutbtn" Click="Logoutbtn_Click"></Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65px"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--This will store the options(buttons) for the user-->
+            <WrapPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Name="insideMenuWrap" Visibility="Hidden">
+                <Button Content="Levélírás" Name="SendNewLetterbtn" Click="SendNewLetterbtn_Click"></Button>
+                <Button Content="Kiválasztott olvasása" Name="ReadSelectedLetterbtn" Click="ReadSelectedLetterbtn_Click" />
+                <Button Content="Kiválasztott Törlése" Name="DeleteSelectedLetterbtn" Click="DeleteSelectedLetterbtn_Click" />
+                <Button Content="Rendezés" Name="Sortbtn" Click="Sortbtn_Click" />
+                <Label Content="Rendezés típusa:"></Label>
+                <RadioButton Content="Küldő szerint" VerticalAlignment="Center" GroupName="sortType" Name="SenderRadiobtn" IsChecked="True"></RadioButton>
+                <RadioButton Content="Tárgy szerint" VerticalAlignment="Center" GroupName="sortType" Name="SubjectRadiobtn"></RadioButton>
+                <RadioButton Content="Dátum szerint" VerticalAlignment="Center" GroupName="sortType" Name="DateRadiobtn"></RadioButton>
+            </WrapPanel>
+            <!--This is where the user will be able to select the emails-->
+            <ListBox Grid.Row="1" Grid.Column="0" Name="emaillistbox">
+            </ListBox>
+            <StackPanel Grid.RowSpan="2" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Címzett" Name="headerLabel"></Label>
+                    <TextBox Name="headertbox" MinWidth="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Tárgy"></Label>
+                    <TextBox Name="subjecttbox" MinWidth="100"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Tartalom"></Label>
+                    <TextBox Name="ContentTbox" MinWidth="100" MinHeight="200" TextWrapping="WrapWithOverflow"></TextBox>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Küldés" Name="Sendbtn" Click="Sendbtn_Click" Visibility="Hidden"></Button>
+        </Grid>
+    </Grid>
+</Window>
